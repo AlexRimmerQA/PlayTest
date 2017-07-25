@@ -29,7 +29,7 @@ class Application extends Controller {
 
   def optParamPage(optParam: Option[String]): Action[AnyContent] = Action {
     optParam match {
-      case Some(x) => Ok(views.html.optparampage(x))
+      case Some(x) => Ok(views.html.optparampage("Parameter passed in was: " + x))
       case None => Ok(views.html.optparampage("No optional parmeter was set"))
     }
   }
