@@ -8,8 +8,31 @@ GET     /                           controllers.Application.index
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
-GET     /saywhat/:what              controllers.Application.saywhat(what: String)
+GET     /dynamicparampage/:param    controllers.Application.dynamicParamPage(param: String)
+GET     /staticparampage/static     controllers.Application.staticParamPage(param: String = "THIS IS STATIC")
+GET     /defaultparampage           controllers.Application.defaultParamPage(param: String ?= "Hello?")
+GET     /setparampage               controllers.Application.setParamPage(param = "Hello")
+GET     /optparampage               controllers.Application.optParamPage(param: Option[String])
+GET     /optparampage               controllers.Application.staticParamPage(param: String = "THIS IS ALSO STATIC")
 
-GET     /justsomepage               controllers.Application.justSomePage
+GET     /notfoundpage               controllers.Default.notFound
+GET     /errorpage                  controllers.Default.error
+GET     /todopage                   controllers.Default.todo
+GET     /reversedpage               controllers.Application.reversePage
 
-GET     /justsomepage/withstuff     controllers.Application.pageWithStuff
+GET     /actiontodo                 controllers.Application.actionToDo
+GET     /actionnotfound             controllers.Application.actionNotFound
+GET     /actionbadrequest           controllers.Application.actionBadRequest
+GET     /actionservererr            controllers.Application.actionServErr
+GET     /actionanystatus            controllers.Application.actionAnyStatus
+
+GET     /addcookie/:key/:value      controllers.Application.addCookie(key: String, value: String)
+GET     /removecookies/:key         controllers.Application.removeCookies(key: String)
+GET     /getcookie/:key             controllers.Application.getCookie(key: String)
+
+GET     /addsession/:key/:value     controllers.Application.addSessionData(key: String, value: String)
+GET     /removesession/:key         controllers.Application.removeSessionData(key: String)
+GET     /getsession/:key            controllers.Application.getSessionData(key: String)
+
+GET     /addflash/:key/:value       controllers.Application.addFlash(key: String, value: String)
+GET     /getflash/:key              controllers.Application.getFlash(key: String)
